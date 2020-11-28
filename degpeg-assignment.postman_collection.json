@@ -1,0 +1,373 @@
+{
+	"info": {
+		"_postman_id": "4f3531ec-8f91-4362-9ace-454ef2448c28",
+		"name": "degpeg-assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Create Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Television\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Category By SKU",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/categories/sku/TV005",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"sku",
+								"TV005"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category By SKU",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"TV\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/categories/sku/TV005",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"sku",
+								"TV005"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category By SKU",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "categoryName",
+									"value": "Watches",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Rolex",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "115000",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "The best watch",
+									"type": "text"
+								},
+								{
+									"key": "sku",
+									"value": "W001",
+									"type": "text"
+								},
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products By SKU",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/products/sku/TV001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"sku",
+								"TV001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product By SKU",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "price",
+									"value": "25000",
+									"type": "text"
+								},
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/products/sku/TV005",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"sku",
+								"TV005"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product By SKU",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/products/sku/TV010",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"sku",
+								"TV010"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"query\": {\r\n    \"slug\": {\r\n        \"id\": \"123\",\r\n        \"sku\": \"PR1230\"\r\n        },\r\n\r\n    \"search\": {\r\n        \"name\": \"red shoe\"\r\n        },\r\n\r\n    \"filter\": {\r\n        \"category\": \"123, 45, 567, 89\"\r\n        },\r\n\r\n    \"sort\": {\r\n        \"sortby\": \"price\",\r\n        \"sortval\": \"asc\"\r\n        },\r\n\r\n    \"pg\": {\r\n        \"offset\": \"0\",\r\n        \"limit\": \"10\"\r\n        }      \r\n}\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/products/select?filter={\"category\": \"5fc11ff4e37f2436105464f4,5fc121591666502710d91d1a\"}&sort={ \"sortby\": \"price\", \"sortval\": \"desc\"}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"select"
+							],
+							"query": [
+								{
+									"key": "slug",
+									"value": "{\"sku\": \"TV004\"}",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "{ \"name\": \"R\" }",
+									"disabled": true
+								},
+								{
+									"key": "filter",
+									"value": "{\"category\": \"5fc11ff4e37f2436105464f4,5fc121591666502710d91d1a\"}"
+								},
+								{
+									"key": "sort",
+									"value": "{ \"sortby\": \"price\", \"sortval\": \"desc\"}"
+								},
+								{
+									"key": "pg",
+									"value": "{ \"offset\": \"0\",\"limit\": \"10\"}",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"variable": [
+		{
+			"id": "25941935-be9c-44e1-8198-3d5631447c06",
+			"key": "url",
+			"value": "https://localhost:5000/api/v1"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
