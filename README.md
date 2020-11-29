@@ -9,7 +9,7 @@ Implemented routes
 
 ## Things need to be done
 
-- [ ] Validation for inputs
+- [x] Validation for inputs
 - [x] Updating the image URL
 - [ ] Documentation
 
