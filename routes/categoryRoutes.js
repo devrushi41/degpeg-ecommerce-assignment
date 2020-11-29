@@ -6,12 +6,16 @@ import {
   updateCategoryBySku,
   deleteCategoryBySku,
 } from "../controllers/categoryControllers.js";
+import {
+  hasValidCategoryName,
+  hasValidSku,
+} from "../middlewares/validationMiddleware.js";
 const router = Router();
 
 router.get("/", getAllCategories);
-router.post("/", createCategory);
-router.get("/sku/:sku", getCategoryBySku);
-router.put("/sku/:sku", updateCategoryBySku);
-router.delete("/sku/:sku", deleteCategoryBySku);
+router.post("/", hasValidCategoryName, createCategory);
+router.get("/sku/:sku", hasValidSku, getCategoryBySku);
+router.put("/sku/:sku", hasValidSku, hasValidCategoryName, updateCategoryBySku);
+router.delete("/sku/:sku", hasValidSku, deleteCategoryBySku);
 
 export default router;
