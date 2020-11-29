@@ -96,7 +96,7 @@ export const deleteProductBySku = asyncHandler(async (req, res) => {
     res.status(200).json({ msg: "Product deleted" });
   } catch (error) {
     res.status(404);
-    throw "Unable to delete the Product";
+    throw new Error("Unable to delete the Product");
   }
 });
 
