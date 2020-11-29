@@ -185,3 +185,41 @@ export const queryProducts = async (req, res) => {
     res.status(404).json({ err: error.toString() });
   }
 };
+
+export const updateProductAvatarBySku = async (req, res, next) => {
+  upload(req, res, async function (err) {
+    if (err) {
+      if (err.code === "LIMIT_FILE_SIZE") {
+        res.status(400).json({
+          err: "File size is too large. Max limit is 256kb",
+        });
+      } else if (err.code === "INVALID_FILE_TYPE") {
+        res.status(400).json({
+          err: "File type is invalid.",
+        });
+      } else {
+        res.status(404).json({ error: err.toString() });
+      }
+    } else {
+      const { sku } = req.params;
+      try {
+        const product = await Product.findOne({ sku: sku });
+        if (product.avatar) {
+          fs.unlink(
+            product.avatar,
+            (err) => err && console.log(err.toString())
+          );
+        }
+        product.avatar = req.file.destination + "/" + req.file.filename;
+        res.status(200).json({ msg: "Avatar Updated" });
+        await product.save();
+      } catch (error) {
+        fs.unlink(
+          req.file.destination + "/" + req.file.filename,
+          (err) => err && console.log(err)
+        );
+        res.status(200).json({ err: error.toString() });
+      }
+    }
+  });
+};
