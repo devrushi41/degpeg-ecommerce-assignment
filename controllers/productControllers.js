@@ -218,12 +218,7 @@ export const updateProductAvatarBySku = async (req, res, next) => {
           req.file.destination + "/" + req.file.filename,
           (err) => err && console.log(err)
         );
-        if (error.code === 11000) {
-          res.status(404).json({ error: "SKU Field is already used" });
-        }
-        if (error instanceof TypeError) {
-          res.status(404).json({ error: "Invalid Category Name" });
-        }
+        res.status(200).json({ err: error.toString() });
       }
     }
   });
