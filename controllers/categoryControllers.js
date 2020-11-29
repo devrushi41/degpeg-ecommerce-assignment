@@ -34,7 +34,7 @@ export const createCategory = asyncHandler(async (req, res) => {
     res.status(200).json({ msg: "New Category Created" });
   } catch (error) {
     res.status(404);
-    throw new Error(error.toString());
+    throw new Error("Could not create a category");
   }
 });
 

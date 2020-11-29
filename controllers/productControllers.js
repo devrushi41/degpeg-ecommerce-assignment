@@ -11,7 +11,7 @@ export const getAllProducts = asyncHandler(async (req, res) => {
     res.json(products);
   } catch (error) {
     res.status(404);
-    throw "Unable to fetch Products";
+    throw new Error("Unable to fetch Products");
   }
 });
 
@@ -24,7 +24,7 @@ export const getProductBySku = asyncHandler(async (req, res) => {
     res.status(200).json(products);
   } catch (error) {
     res.status(404);
-    throw "No products with the given SKU are found";
+    throw new Error("No products with the given SKU are found");
   }
 });
 
@@ -48,6 +48,13 @@ export const createProduct = async (req, res, next) => {
         if (!sku) {
           res.status(404).json({ error: "SKU is required" });
         }
+        if (!name) {
+          res.status(404).json({ error: "Name is required" });
+        }
+        if (!price) {
+          res.status(404).json({ error: "Price is required" });
+        }
+
         const category = await Category.findOne({ name: categoryName });
 
         const product = new Product({
@@ -62,10 +69,11 @@ export const createProduct = async (req, res, next) => {
         await product.save();
         res.status(200).json({ msg: "New Product created" });
       } catch (error) {
-        fs.unlink(
-          req.file.destination + "/" + req.file.filename,
-          (err) => err && console.log(err)
-        );
+        req.file &&
+          fs.unlink(
+            req.file.destination + "/" + req.file.filename,
+            (err) => err && console.log(err)
+          );
         if (error.code === 11000) {
           res.status(404).json({ error: "SKU Field is already used" });
         }
@@ -85,7 +93,7 @@ export const updateProductBySku = asyncHandler(async (req, res) => {
     res.status(200).json({ msg: "Product updated successfully" });
   } catch (error) {
     res.status(404);
-    throw "Unable to update the product";
+    throw new Error("Unable to update the product");
   }
 });
 
@@ -96,7 +104,7 @@ export const deleteProductBySku = asyncHandler(async (req, res) => {
     res.status(200).json({ msg: "Product deleted" });
   } catch (error) {
     res.status(404);
-    throw "Unable to delete the Product";
+    throw new Error("Unable to delete the Product");
   }
 });
 
@@ -214,10 +222,11 @@ export const updateProductAvatarBySku = async (req, res, next) => {
         res.status(200).json({ msg: "Avatar Updated" });
         await product.save();
       } catch (error) {
-        fs.unlink(
-          req.file.destination + "/" + req.file.filename,
-          (err) => err && console.log(err)
-        );
+        req.file &&
+          fs.unlink(
+            req.file.destination + "/" + req.file.filename,
+            (err) => err && console.log(err)
+          );
         res.status(200).json({ err: error.toString() });
       }
     }
