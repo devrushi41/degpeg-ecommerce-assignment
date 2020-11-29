@@ -12,7 +12,3 @@ Implemented routes
 - [x] Validation for inputs
 - [x] Updating the image URL
 - [ ] Documentation
-
-## Problems Now
-
-- Could not add image upload logic to the update Product By SKU Controller
