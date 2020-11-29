@@ -11,7 +11,7 @@ export const getAllProducts = asyncHandler(async (req, res) => {
     res.json(products);
   } catch (error) {
     res.status(404);
-    throw "Unable to fetch Products";
+    throw new Error("Unable to fetch Products");
   }
 });
 
