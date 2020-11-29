@@ -24,7 +24,7 @@ export const getProductBySku = asyncHandler(async (req, res) => {
     res.status(200).json(products);
   } catch (error) {
     res.status(404);
-    throw "No products with the given SKU are found";
+    throw new Error("No products with the given SKU are found");
   }
 });
 
