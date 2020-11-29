@@ -85,7 +85,7 @@ export const updateProductBySku = asyncHandler(async (req, res) => {
     res.status(200).json({ msg: "Product updated successfully" });
   } catch (error) {
     res.status(404);
-    throw "Unable to update the product";
+    throw new Error("Unable to update the product");
   }
 });
 
